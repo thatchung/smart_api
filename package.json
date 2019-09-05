@@ -1,0 +1,53 @@
+{
+  "name": "lixi-pos-api",
+  "description": "Lixi POS Api",
+  "author": "TFL",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon ./app.js",
+    "start": "NODE_ENV=production node app.js"
+  },
+  "dependencies": {
+    "actions-on-google": "^2.12.0",
+    "analytics": "0.0.4",
+    "axios": "^0.17.1",
+    "body-parser": "^1.18.3",
+    "cluster": "^0.7.7",
+    "compression": "^1.7.1",
+    "cors": "^2.8.5",
+    "elasticsearch": "^14.2.2",
+    "excel-export": "^0.5.1",
+    "express": "^4.16.4",
+    "express-session": "^1.16.2",
+    "formidable": "^1.2.1",
+    "fs": "0.0.1-security",
+    "googleapis": "^27.0.0",
+    "group-array": "^0.3.3",
+    "group-by": "0.0.1",
+    "js-md5": "^0.7.3",
+    "js-sha3": "^0.7.0",
+    "jsonwebtoken": "^8.5.0",
+    "jwt-express": "^1.1.0",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.25",
+    "mqtt": "^2.18.8",
+    "mysql2": "^1.6.5",
+    "node-xlsx": "^0.11.2",
+    "pg": "^7.6.0",
+    "query-string": "^5.1.1",
+    "redis": "^2.8.0",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.4",
+    "sequelize": "^4.41.0",
+    "sha1": "^1.1.1",
+    "sha256": "^0.2.0",
+    "socket.io": "^2.2.0",
+    "universal-analytics": "^0.4.20",
+    "uuid": "^3.1.0",
+    "websocket": "^1.0.28",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.5"
+  }
+}

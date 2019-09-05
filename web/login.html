@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Sean Smart Home</title>
+    <meta name="description" content="Smart Home virtual devices">
+
+    <link rel="icon" href="images/favicon.ico">
+
+    <!-- See https://goo.gl/OOhYW5 for web app manifests -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM for Chrome on Android theme-color attribute -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Smart Home Gizmos">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Smart Home Gizmos">
+
+
+    <!-- login -->
+    <meta name="google-signin-scope" content="profile email">
+
+    <script src="./script/jQuery-2.2.0.min.js"></script>
+    <script src="./script/axios.js"></script>
+
+</head>
+<body>
+    <style>
+        app-header {
+            color: #fff;
+            background-color: #4285f4;
+        }
+
+        app-header paper-icon-button {
+            --paper-icon-button-ink-color: white;
+        }
+
+        div.main {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            width: 100%;
+        }
+
+        div.main > h1 {
+            color: #333;
+        }
+
+        paper-input {
+            width: calc(100% - 40px);
+            margin-left: 20px;
+            text-align: left;
+        }
+
+        paper-input iron-icon {
+            margin-right: 16px;
+            color: #555;
+        }
+
+        paper-button {
+            color: white;
+            background-color: #4285f4;
+        }
+
+        @media (max-width:800px) {
+            div.main > h1 {
+                font-size: 16pt;
+            }
+        }
+
+        @media (min-width:800px) {
+            div.main {
+                width: 600px;
+            }
+            paper-input {
+                margin-left: 80px;
+            }
+        }
+    </style>
+
+    <div class='main'>
+        <h1>Login With Sean</h1>
+        <img src='images/logo.png' />
+
+        <div>
+        	<div>
+        		<label>Email</label>
+        		<input type="text" name="" value="" placeholder="Email">
+        	</div>
+        	<div>
+        		<label>Password</label>
+        		<input type="text" name="" value="" placeholder="Password">
+        	</div>
+        </div>
+
+        <input type="hidden" name="redirect">
+        <input type="hidden" name="client_id">
+        <input type="hidden" name="redirect_uri">
+        <input type="hidden" name="state" />
+        <input type="hidden" name="uid" />
+        <div class="btn-gglogin" onclick="loginAction()">Login</div>
+    </div>
+
+    <script>
+
+
+        function getUrlParameters () {
+            // Get each parameter
+            let query = window.location.search.substr(1);
+            // Split each parameter into a key-value pair
+            let keyValues = query.split('&');
+            let parameterMap = new Map();
+            for (let i in keyValues) {
+                // Split into <key>=<value>
+                let param = keyValues[i];
+                let splitParam = param.split('=');
+                parameterMap.set(splitParam[0], splitParam[1]);
+            }
+            return parameterMap;
+        }
+
+
+        function loginAction(){
+
+            if(user){
+                SessionUser.setUser(user);
+
+                let params = getUrlParameters();
+                
+                // Set each hidden input from a value obtained from the URL
+                document.querySelector('[name="redirect_uri"]').value = params.get('redirect_uri');
+                document.querySelector('[name="client_id"]').value = params.get('client_id');
+                document.querySelector('[name="state"]').value = params.get('state');
+                document.querySelector('[name="username"]').value = document.querySelector('paper-input[name="paper_username"]').value;
+                document.querySelector('[name="password"]').value = document.querySelector('paper-input[name="paper_password"]').value;
+                document.querySelector('[name="uid"]').value = user.uid;
+                
+            }
+            else{
+                var provider = new firebase.auth.GoogleAuthProvider();
+                firebase.auth().signInWithRedirect(provider);
+            }
+        }
+
+
+        function addNewUserToFireBase(user){
+            console.log(user);
+            firebase.database().ref('users/' + user.uid).set({
+                username: user.username,
+                email: user.email,
+                picture : user.picture,
+                fakeRefreshToken: user.fakeRefreshToken,
+                fakeAccessToken: user.fakeAccessToken,
+                homegraph: true
+            });
+        }
+    </script>
+</body>
+</html>
