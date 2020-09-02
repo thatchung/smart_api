@@ -21,7 +21,7 @@
     "express-session": "^1.16.2",
     "formidable": "^1.2.1",
     "fs": "0.0.1-security",
-    "googleapis": "^27.0.0",
+    "googleapis": "^39.1.0",
     "group-array": "^0.3.3",
     "group-by": "0.0.1",
     "js-md5": "^0.7.3",
