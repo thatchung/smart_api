@@ -28,7 +28,7 @@
     "js-sha3": "^0.7.0",
     "jsonwebtoken": "^8.5.0",
     "jwt-express": "^1.1.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "moment-timezone": "^0.5.25",
     "mqtt": "^2.18.8",
     "mysql2": "^1.6.5",
