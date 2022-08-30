@@ -29,7 +29,7 @@
     "jsonwebtoken": "^8.5.0",
     "jwt-express": "^1.1.0",
     "moment": "^2.24.0",
-    "moment-timezone": "^0.5.25",
+    "moment-timezone": "^0.5.35",
     "mqtt": "^2.18.8",
     "mysql2": "^1.6.5",
     "node-xlsx": "^0.11.2",
