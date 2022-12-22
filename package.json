@@ -26,7 +26,7 @@
     "group-by": "0.0.1",
     "js-md5": "^0.7.3",
     "js-sha3": "^0.7.0",
-    "jsonwebtoken": "^8.5.0",
+    "jsonwebtoken": "^9.0.0",
     "jwt-express": "^1.1.0",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.25",
